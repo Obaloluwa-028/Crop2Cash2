@@ -1,32 +1,564 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crop2Cash — Analyze Harvest</title><link rel="stylesheet" href="assets/css/app.css"></head>
-<body class="app-page">
-  <aside class="sidebar"><a class="brand" href="dashboard.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a><nav><a href="dashboard.html">Overview</a><a class="active" href="analyze.html">Analyze harvest</a><a href="history.html">History</a><a href="markets.html">Market board</a><a href="profile.html">Profile</a></nav><button id="logoutBtn" class="btn ghost full">Sign out</button></aside>
-  <main class="app-main">
-    <div class="mobile-top"><a class="brand" href="dashboard.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a><button id="openNav">☰</button></div>
-    <header class="app-head"><div><span class="kicker">NEW ANALYSIS</span><h1>What should you do with this harvest?</h1><p class="muted">The more grounded the inputs, the more useful the decision.</p></div><div class="step-pill">01 Capture · 02 Compare · 03 Decide</div></header>
 
-    <form id="analysisForm" class="analysis-form">
-      <section class="panel"><div class="panel-head"><div><span class="kicker">01 · HARVEST INPUT</span><h2>What did you harvest?</h2></div></div>
-        <div class="two-col"><label>Crop / produce<input id="crop" placeholder="Tomatoes" required></label><label>Quantity<input id="quantity" type="number" min="0.01" step="0.01" placeholder="20" required></label></div>
-        <div class="two-col"><label>Unit<select id="unit"><option>crates</option><option>bags</option><option>kg</option><option>tonnes</option><option>pieces</option></select></label><label>Harvest date<input id="harvestDate" type="date" required></label></div>
-        <label>Location / market area<input id="location" placeholder="e.g. Kano, Kaduna, Jos"></label>
-        <label>Notes<textarea id="notes" rows="4" placeholder="Variety, quality concerns, expected buyers, transport situation..."></textarea></label>
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+
+  <title>
+    Crop2Cash — Analyze Harvest
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/app.css"
+  >
+
+</head>
+
+<body class="app-page">
+
+  <aside class="sidebar">
+
+    <a
+      class="brand"
+      href="dashboard.html"
+    >
+
+      <span class="brand-mark">
+        C2C
+      </span>
+
+      <span>
+        Crop2Cash
+      </span>
+
+    </a>
+
+    <nav>
+
+      <a href="dashboard.html">
+        Overview
+      </a>
+
+      <a
+        class="active"
+        href="analyze.html"
+      >
+        Analyze harvest
+      </a>
+
+      <a href="history.html">
+        History
+      </a>
+
+      <a href="markets.html">
+        Market board
+      </a>
+
+      <a href="profile.html">
+        Profile
+      </a>
+
+    </nav>
+
+    <button
+      id="logoutBtn"
+      class="btn ghost full"
+    >
+      Sign out
+    </button>
+
+  </aside>
+
+  <main class="app-main">
+
+    <div class="mobile-top">
+
+      <a
+        class="brand"
+        href="dashboard.html"
+      >
+
+        <span class="brand-mark">
+          C2C
+        </span>
+
+        <span>
+          Crop2Cash
+        </span>
+
+      </a>
+
+      <button id="openNav">
+        ☰
+      </button>
+
+    </div>
+
+    <header class="app-head">
+
+      <div>
+
+        <span class="kicker">
+          NEW ANALYSIS
+        </span>
+
+        <h1>
+          What should you do with this harvest?
+        </h1>
+
+        <p class="muted">
+          Give Crop2Cash enough context to make
+          the decision more useful.
+        </p>
+
+      </div>
+
+      <div class="step-pill">
+        01 Capture · 02 Compare · 03 Decide
+      </div>
+
+    </header>
+
+    <form
+      id="analysisForm"
+      class="analysis-form"
+    >
+
+      <!-- HARVEST -->
+
+      <section class="panel">
+
+        <div class="panel-head">
+
+          <div>
+
+            <span class="kicker">
+              01 · HARVEST INPUT
+            </span>
+
+            <h2>
+              What did you harvest?
+            </h2>
+
+          </div>
+
+        </div>
+
+        <div class="two-col">
+
+          <label>
+            Crop / produce
+
+            <input
+              id="crop"
+              placeholder="Tomatoes"
+              required
+            >
+
+          </label>
+
+          <label>
+            Variety
+
+            <span class="label-note">
+              optional
+            </span>
+
+            <input
+              id="variety"
+              placeholder="Roma, UC82, etc."
+            >
+
+          </label>
+
+        </div>
+
+        <div class="two-col">
+
+          <label>
+            Quantity
+
+            <input
+              id="quantity"
+              type="number"
+              min="0.01"
+              step="0.01"
+              placeholder="20"
+              required
+            >
+
+          </label>
+
+          <label>
+            Unit
+
+            <select id="unit">
+
+              <option>
+                crates
+              </option>
+
+              <option>
+                bags
+              </option>
+
+              <option>
+                kg
+              </option>
+
+              <option>
+                tonnes
+              </option>
+
+              <option>
+                pieces
+              </option>
+
+            </select>
+
+          </label>
+
+        </div>
+
+        <div class="two-col">
+
+          <label>
+            Harvest date
+
+            <input
+              id="harvestDate"
+              type="date"
+              required
+            >
+
+          </label>
+
+          <label>
+            Location / market area
+
+            <input
+              id="location"
+              placeholder="Kano, Kaduna, Jos"
+            >
+
+          </label>
+
+        </div>
+
+        <label>
+          Preferred response language
+
+          <select
+            id="preferredLanguage"
+          >
+
+            <option>
+              English
+            </option>
+
+            <option>
+              Hausa
+            </option>
+
+            <option>
+              Yoruba
+            </option>
+
+            <option>
+              Igbo
+            </option>
+
+            <option>
+              Pidgin
+            </option>
+
+          </select>
+
+        </label>
+
+        <div class="two-col">
+
+          <label>
+            Storage available?
+
+            <select id="storageAvailable">
+
+              <option value="false">
+                No
+              </option>
+
+              <option value="true">
+                Yes
+              </option>
+
+            </select>
+
+          </label>
+
+          <label>
+            Safe storage window
+
+            <span class="label-note">
+              days
+            </span>
+
+            <input
+              id="storageDays"
+              type="number"
+              min="0"
+              step="1"
+              placeholder="3"
+            >
+
+          </label>
+
+        </div>
+
+        <label>
+          Notes
+
+          <textarea
+            id="notes"
+            rows="4"
+            placeholder="Quality concerns, expected buyers, packaging, transport situation..."
+          ></textarea>
+
+        </label>
+
       </section>
-      <section class="panel"><div class="panel-head"><div><span class="kicker">02 · AI VISION</span><h2>Show the produce</h2><p class="muted">Use a clear photo. The AI will analyze visible condition—not hidden internal quality.</p></div></div>
-        <label class="dropzone"><input id="imageInput" type="file" accept="image/*" required><span id="dropTitle">Drop photo here or click to browse</span><small>JPG, PNG or WEBP · keep the image clear and well lit</small></label>
-        <div id="preview" class="image-preview hidden"><img id="previewImg" alt="Produce preview"><button id="clearImage" type="button" class="icon-btn">×</button></div>
+
+
+      <!-- IMAGE + VOICE -->
+
+      <section class="panel">
+
+        <div class="panel-head">
+
+          <div>
+
+            <span class="kicker">
+              02 · VOICE + VISION
+            </span>
+
+            <h2>
+              Show and tell
+            </h2>
+
+            <p class="muted">
+              Add a clear photo and optionally
+              speak the harvest details.
+            </p>
+
+          </div>
+
+        </div>
+
+        <label class="dropzone">
+
+          <input
+            id="imageInput"
+            type="file"
+            accept="image/*"
+            required
+          >
+
+          <span id="dropTitle">
+            Drop photo here or click to browse
+          </span>
+
+          <small>
+            JPG, PNG or WEBP · use a clear,
+            well-lit produce photo
+          </small>
+
+        </label>
+
+        <div
+          id="preview"
+          class="image-preview hidden"
+        >
+
+          <img
+            id="previewImg"
+            alt="Produce preview"
+          >
+
+          <button
+            id="clearImage"
+            type="button"
+            class="icon-btn"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <div class="voice-box">
+
+          <div>
+
+            <strong>
+              Optional voice note
+            </strong>
+
+            <small id="voiceStatus">
+              You can speak naturally instead
+              of typing.
+            </small>
+
+          </div>
+
+          <button
+            id="voiceBtn"
+            type="button"
+            class="btn ghost"
+          >
+            🎙 Start voice
+          </button>
+
+        </div>
+
+        <textarea
+          id="voiceTranscript"
+          rows="3"
+          placeholder="Voice transcript will appear here. You can edit it."
+        ></textarea>
+
       </section>
-      <section class="panel"><div class="panel-head"><div><span class="kicker">03 · MARKET INPUTS</span><h2>Choose the markets</h2><p class="muted">Quotes come from your Market Board. Add at least one current quote.</p></div><a class="text-link" href="markets.html">Manage quotes →</a></div>
-        <div id="marketPicker" class="market-picker"><div class="empty-state">Loading markets…</div></div>
-        <div class="two-col"><label>Estimated transport cost<input id="transportCost" type="number" min="0" step="100" placeholder="24000"></label><label>Other selling costs<input id="otherCost" type="number" min="0" step="100" placeholder="0"></label></div>
+
+
+      <!-- MARKETS -->
+
+      <section class="panel">
+
+        <div class="panel-head">
+
+          <div>
+
+            <span class="kicker">
+              03 · MARKET INPUTS
+            </span>
+
+            <h2>
+              Choose the markets
+            </h2>
+
+            <p class="muted">
+              Crop2Cash compares current quotes
+              using estimated net value.
+            </p>
+
+          </div>
+
+          <a
+            class="text-link"
+            href="markets.html"
+          >
+            Manage quotes →
+          </a>
+
+        </div>
+
+        <div
+          id="marketPicker"
+          class="market-picker"
+        >
+
+          <div class="empty-state">
+            Loading markets…
+          </div>
+
+        </div>
+
+        <div class="two-col">
+
+          <label>
+            Transport cost
+
+            <input
+              id="transportCost"
+              type="number"
+              min="0"
+              step="100"
+              placeholder="24000"
+            >
+
+          </label>
+
+          <label>
+            Other selling costs
+
+            <input
+              id="otherCost"
+              type="number"
+              min="0"
+              step="100"
+              placeholder="0"
+            >
+
+          </label>
+
+        </div>
+
       </section>
-      <section class="panel"><div class="panel-head"><div><span class="kicker">READY?</span><h2>Run the decision engine</h2><p class="muted">Your photo, harvest inputs and selected market quotes will be combined into a grounded analysis.</p></div></div>
-        <button class="btn primary big" type="submit" id="runBtn">Analyze with AI →</button><p id="analysisMsg" class="form-msg"></p>
+
+
+      <!-- RUN -->
+
+      <section class="panel">
+
+        <div class="panel-head">
+
+          <div>
+
+            <span class="kicker">
+              04 · DECISION
+            </span>
+
+            <h2>
+              Run the decision engine
+            </h2>
+
+            <p class="muted">
+              AI will combine visible evidence,
+              your market quotes, costs and
+              storage situation.
+            </p>
+
+          </div>
+
+        </div>
+
+        <button
+          class="btn primary big"
+          type="submit"
+          id="runBtn"
+        >
+          Analyze with AI →
+        </button>
+
+        <p
+          id="analysisMsg"
+          class="form-msg"
+        ></p>
+
       </section>
+
     </form>
+
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/core.js"></script><script src="assets/js/analyze.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/analyze.js"></script>
+
 </body>
 </html>
