@@ -1,0 +1,9 @@
+{
+  "name": "Crop2Cash",
+  "short_name": "Crop2Cash",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#07100c",
+  "theme_color": "#07100c",
+  "description": "AI-assisted harvest-to-market intelligence."
+}

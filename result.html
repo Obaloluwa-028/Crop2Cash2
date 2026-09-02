@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crop2Cash — Decision</title><link rel="stylesheet" href="assets/css/app.css"></head>
+<body class="app-page">
+  <aside class="sidebar"><a class="brand" href="dashboard.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a><nav><a href="dashboard.html">Overview</a><a href="analyze.html">Analyze harvest</a><a class="active" href="history.html">History</a><a href="markets.html">Market board</a><a href="profile.html">Profile</a></nav><button id="logoutBtn" class="btn ghost full">Sign out</button></aside>
+  <main class="app-main">
+    <div class="mobile-top"><a class="brand" href="dashboard.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a><button id="openNav">☰</button></div>
+    <header class="app-head"><div><span class="kicker">AI DECISION</span><h1 id="resultTitle">Harvest analysis</h1><p id="resultSub" class="muted"></p></div><div><button id="printBtn" class="btn ghost">Print / PDF</button><a class="btn primary" href="analyze.html">New analysis</a></div></header>
+    <div id="resultLoading" class="panel loading-state">Loading analysis…</div>
+    <div id="resultContent" class="hidden">
+      <section class="result-hero"><div class="result-action"><span>RECOMMENDED ACTION</span><strong id="action">—</strong><small id="confidence">—</small></div><div class="result-value"><small>Expected net value</small><strong id="netValue">₦0</strong><span id="bestMarket">—</span></div></section>
+      <section class="result-grid">
+        <div class="panel"><span class="kicker">VISION SUMMARY</span><h2>What the AI saw</h2><div id="visionSummary" class="rich-text"></div></div>
+        <div class="panel"><span class="kicker">WHY THIS MOVE</span><h2>Decision rationale</h2><div id="rationale" class="rich-text"></div></div>
+      </section>
+      <section class="panel"><div class="panel-head"><div><span class="kicker">MARKET COMPARISON</span><h2>Net outcome by market</h2></div></div><div id="marketTable" class="table-wrap"></div></section>
+      <section class="result-grid">
+        <div class="panel"><span class="kicker">RISK FLAGS</span><h2>What could change the decision?</h2><div id="risks" class="chips"></div></div>
+        <div class="panel"><span class="kicker">NEXT ACTION</span><h2>Make it actionable</h2><div id="nextAction" class="rich-text"></div></div>
+      </section>
+      <section class="panel"><span class="kicker">AUDIT TRAIL</span><h2>How this recommendation was produced</h2><div id="audit" class="audit-grid"></div><p class="tiny">This analysis is advisory. Market prices are user-entered quotes and can change quickly. AI image analysis can be imperfect.</p></section>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/core.js"></script><script src="assets/js/result.js"></script>
+</body>
+</html>

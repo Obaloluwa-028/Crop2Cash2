@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Crop2Cash — Harvest-to-Market Intelligence</title>
+  <meta name="description" content="Crop2Cash helps farmers decide when, where and how to sell harvested produce using AI-assisted harvest intelligence.">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+  <header class="landing-nav">
+    <a class="brand" href="index.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a>
+    <nav class="landing-links">
+      <a href="#problem">The problem</a><a href="#workflow">How it works</a><a href="auth.html">Sign in</a>
+      <a class="btn primary" href="auth.html?mode=signup">Create account</a>
+    </nav>
+    <button class="mobile-menu" aria-label="Menu">☰</button>
+  </header>
+
+  <main>
+    <section class="landing-hero">
+      <div class="hero-copy">
+        <span class="kicker">HARVEST → MARKET INTELLIGENCE</span>
+        <h1>Make the next selling decision with evidence.</h1>
+        <p>Crop2Cash brings together your harvest, a produce photo, market quotes and cost signals to produce one clear action: <strong>sell now, wait, or choose another market.</strong></p>
+        <div class="hero-cta">
+          <a class="btn primary big" href="auth.html?mode=signup">Analyze my harvest</a>
+          <a class="btn ghost big" href="#workflow">See the workflow</a>
+        </div>
+        <div class="micro-trust"><span>✓ Personal account</span><span>✓ Farmer-owned records</span><span>✓ AI-assisted</span></div>
+      </div>
+      <div class="hero-decision glass">
+        <div class="decision-top"><span>DECISION PREVIEW</span><b class="live-dot">● AI</b></div>
+        <div class="crop-line"><div class="crop-photo-placeholder">🍅</div><div><strong>Tomatoes</strong><small>20 crates · harvested today</small></div></div>
+        <div class="recommendation">
+          <span>RECOMMENDATION</span><strong>SELL TODAY</strong><em>91% confidence</em>
+        </div>
+        <div class="mini-metrics">
+          <div><small>Best market</small><b>Market B</b></div>
+          <div><small>Gross</small><b>₦710k</b></div>
+          <div><small>Costs</small><b>₦24k</b></div>
+          <div><small>Expected net</small><b>₦686k</b></div>
+        </div>
+        <div class="rationale"><strong>Why?</strong><p>High perishability pressure makes waiting less attractive even if prices may rise.</p></div>
+      </div>
+    </section>
+
+    <section id="problem" class="landing-section split">
+      <div><span class="kicker">THE AFRICAN PROBLEM</span><h2>A harvest is valuable. The wrong selling decision can destroy that value.</h2><p>Farmers may know their harvest, but not the full picture: produce condition, competing market quotes, transport cost, timing risk and likely net return. Crop2Cash turns those fragmented signals into an understandable decision.</p></div>
+      <div class="problem-stack">
+        <div><b>Price</b><span>What are buyers paying?</span></div>
+        <div><b>Condition</b><span>How quickly could quality deteriorate?</span></div>
+        <div><b>Cost</b><span>What will transport and selling cost?</span></div>
+        <div><b>Timing</b><span>Is waiting actually worth it?</span></div>
+      </div>
+    </section>
+
+    <section id="workflow" class="landing-section">
+      <span class="kicker">THE WORKFLOW</span><h2>Three steps. One decision.</h2>
+      <div class="workflow">
+        <article><span>01</span><h3>Capture</h3><p>Enter your harvest and upload a photo. The photo gives the AI visual evidence about the produce.</p></article>
+        <article><span>02</span><h3>Compare</h3><p>Add market quotes and costs. Crop2Cash calculates net outcomes rather than showing raw prices alone.</p></article>
+        <article><span>03</span><h3>Act</h3><p>AI explains the strongest move and lets you save the analysis to your account for future decisions.</p></article>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <span class="kicker">BUILD FOR THE REAL DECISION</span><h2>Your harvest deserves more than a guess.</h2><a class="btn primary big" href="auth.html?mode=signup">Create your Crop2Cash account</a>
+    </section>
+  </main>
+  <footer>© 2026 Crop2Cash · AI-assisted decision support, not a guarantee of market outcome.</footer>
+  <script>
+    document.querySelector('.mobile-menu')?.addEventListener('click',()=>document.querySelector('.landing-links').classList.toggle('show'));
+  </script>
+</body>
+</html>

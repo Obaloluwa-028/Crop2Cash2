@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crop2Cash — Account</title><link rel="stylesheet" href="assets/css/app.css"></head>
+<body class="dark-page">
+  <main class="auth-wrap">
+    <a class="brand centered" href="index.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a>
+    <section class="auth-card">
+      <div class="auth-switch"><button id="loginTab">Sign in</button><button id="signupTab">Create account</button></div>
+      <form id="loginForm">
+        <div class="form-intro"><span class="kicker">WELCOME BACK</span><h1>Sign in</h1><p>Continue to your harvest intelligence workspace.</p></div>
+        <label>Email<input id="loginEmail" type="email" autocomplete="email" required></label>
+        <label>Password<input id="loginPassword" type="password" autocomplete="current-password" required></label>
+        <button class="btn primary full" type="submit">Sign in</button><p id="loginMsg" class="form-msg"></p>
+      </form>
+      <form id="signupForm" class="hidden">
+        <div class="form-intro"><span class="kicker">START HERE</span><h1>Create your account</h1><p>Every harvest analysis is tied to your account.</p></div>
+        <label>Full name<input id="signupName" type="text" autocomplete="name" required></label>
+        <label>Username<input id="signupUsername" type="text" minlength="3" maxlength="30" required></label>
+        <label>Email<input id="signupEmail" type="email" autocomplete="email" required></label>
+        <label>Password<input id="signupPassword" type="password" minlength="6" autocomplete="new-password" required></label>
+        <button class="btn primary full" type="submit">Create account</button><p id="signupMsg" class="form-msg"></p>
+      </form>
+    </section>
+    <p class="tiny center">Crop2Cash uses AI as decision support. Always validate prices, costs and agronomic advice locally.</p>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/core.js"></script><script src="assets/js/auth.js"></script>
+</body>
+</html>

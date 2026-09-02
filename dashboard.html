@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crop2Cash — Dashboard</title><link rel="stylesheet" href="assets/css/app.css"></head>
+<body class="app-page">
+  <aside class="sidebar"><a class="brand" href="dashboard.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a>
+    <nav><a class="active" href="dashboard.html">Overview</a><a href="analyze.html">Analyze harvest</a><a href="history.html">History</a><a href="markets.html">Market board</a><a href="profile.html">Profile</a></nav>
+    <button id="logoutBtn" class="btn ghost full">Sign out</button>
+  </aside>
+  <main class="app-main">
+    <div class="mobile-top"><a class="brand" href="dashboard.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a><button id="openNav">☰</button></div>
+    <header class="app-head"><div><span class="kicker">FARMER WORKSPACE</span><h1 id="greeting">Good evening.</h1><p id="userLine" class="muted"></p></div><a class="btn primary" href="analyze.html">+ Analyze harvest</a></header>
+    <section class="stats-grid">
+      <div class="metric"><span>Analyses</span><strong id="statAnalyses">0</strong><small>Saved to your account</small></div>
+      <div class="metric"><span>Est. harvest value</span><strong id="statValue">₦0</strong><small>From analyzed records</small></div>
+      <div class="metric"><span>Avg. confidence</span><strong id="statConfidence">—</strong><small>AI decision score</small></div>
+      <div class="metric"><span>Markets tracked</span><strong id="statMarkets">0</strong><small>Quotes available</small></div>
+    </section>
+    <section class="panel"><div class="panel-head"><div><span class="kicker">RECENT</span><h2>Latest harvest decisions</h2></div><a class="text-link" href="history.html">View all →</a></div><div id="recentList"></div></section>
+    <section class="dashboard-grid"><div class="panel accent-panel"><span class="kicker">NEXT MOVE</span><h2>Have a harvest ready?</h2><p>Upload a clear produce photo, add the quantity and compare the markets you are considering.</p><a class="btn primary" href="analyze.html">Start an analysis</a></div><div class="panel"><span class="kicker">MARKET BOARD</span><h2>Today’s quotes</h2><p class="muted">Use the Market Board to add the prices you are hearing from buyers.</p><a class="btn ghost" href="markets.html">Open market board</a></div></section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/core.js"></script><script src="assets/js/app.js"></script>
+</body>
+</html>

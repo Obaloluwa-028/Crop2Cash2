@@ -1,0 +1,7 @@
+(async()=>{
+ const ctx=await C2C.requireUser();if(!ctx)return;const {sb}=ctx;let rows=[];
+ const list=document.getElementById("historyList");
+ async function load(){const {data,error}=await sb.from("harvest_analyses").select("*").order("created_at",{ascending:false});if(error){list.innerHTML=`<div class="empty-state">${C2C.esc(error.message)}</div>`;return}rows=data||[];render()}
+ function render(){const q=document.getElementById("search").value.toLowerCase();const act=document.getElementById("filterAction").value;const f=rows.filter(r=>(!q||`${r.crop_name} ${r.location||""}`.toLowerCase().includes(q))&&(!act||r.recommended_action===act));if(!f.length){list.innerHTML=`<div class="empty-state">No matching analyses.</div>`;return}list.innerHTML=f.map(r=>`<div class="record-row"><div><strong>${C2C.esc(r.crop_name)} · ${C2C.esc(r.quantity)} ${C2C.esc(r.unit)}</strong><small>${C2C.esc(r.harvest_date||"")} · ${C2C.esc(r.location||"")} · ${C2C.money(r.expected_net_value)}</small></div><div class="record-actions"><span class="badge">${C2C.esc(r.recommended_action||"SAVED")}</span><a class="btn ghost" href="result.html?id=${encodeURIComponent(r.id)}">Open</a></div></div>`).join("")}
+ document.getElementById("search").addEventListener("input",render);document.getElementById("filterAction").addEventListener("change",render);document.getElementById("logoutBtn").onclick=async()=>{await sb.auth.signOut();location.href="index.html"};await load()
+})();
