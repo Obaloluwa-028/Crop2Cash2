@@ -1,9 +1,276 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crop2Cash — Profile</title><link rel="stylesheet" href="assets/css/app.css"></head>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Crop2Cash — Profile</title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/app.css"
+  >
+</head>
+
 <body class="app-page">
-<aside class="sidebar"><a class="brand" href="dashboard.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a><nav><a href="dashboard.html">Overview</a><a href="analyze.html">Analyze harvest</a><a href="history.html">History</a><a href="markets.html">Market board</a><a class="active" href="profile.html">Profile</a></nav><button id="logoutBtn" class="btn ghost full">Sign out</button></aside>
-<main class="app-main"><div class="mobile-top"><a class="brand" href="dashboard.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a><button id="openNav">☰</button></div>
-<header class="app-head"><div><span class="kicker">ACCOUNT</span><h1>Your profile</h1><p class="muted">Manage your account and local app configuration.</p></div></header>
-<div class="dashboard-grid"><section class="panel"><span class="kicker">PROFILE</span><h2>Farmer details</h2><label>Full name<input id="fullName"></label><label>Username<input id="username"></label><label>Email<input id="email" disabled></label><button id="saveProfile" class="btn primary">Save profile</button><p id="profileMsg" class="form-msg"></p></section>
-<section class="panel"><span class="kicker">APP CONFIGURATION</span><h2>Services</h2><p id="serviceStatus" class="muted"></p><a class="btn ghost" href="setup.html">Open setup</a><div class="notice compact"><strong>Security</strong><span>Never use a Supabase secret/service-role key in this app.</span></div></section></div>
-</main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/core.js"></script><script src="assets/js/profile.js"></script></body></html>
+
+  <aside class="sidebar">
+
+    <a
+      class="brand"
+      href="dashboard.html"
+    >
+      <span class="brand-mark">C2C</span>
+      <span>Crop2Cash</span>
+    </a>
+
+    <nav>
+      <a href="dashboard.html">
+        Overview
+      </a>
+
+      <a href="analyze.html">
+        Analyze harvest
+      </a>
+
+      <a href="history.html">
+        History
+      </a>
+
+      <a href="markets.html">
+        Market board
+      </a>
+
+      <a
+        class="active"
+        href="profile.html"
+      >
+        Profile
+      </a>
+    </nav>
+
+    <button
+      id="logoutBtn"
+      class="btn ghost full"
+    >
+      Sign out
+    </button>
+
+  </aside>
+
+  <main class="app-main">
+
+    <div class="mobile-top">
+
+      <a
+        class="brand"
+        href="dashboard.html"
+      >
+        <span class="brand-mark">C2C</span>
+        <span>Crop2Cash</span>
+      </a>
+
+      <button id="openNav">
+        ☰
+      </button>
+
+    </div>
+
+    <header class="app-head">
+
+      <div>
+
+        <span class="kicker">
+          FARMER PROFILE
+        </span>
+
+        <h1>
+          Your farmer profile
+        </h1>
+
+        <p class="muted">
+          These details help Crop2Cash make
+          more context-aware recommendations.
+        </p>
+
+      </div>
+
+    </header>
+
+    <div class="dashboard-grid">
+
+      <section class="panel">
+
+        <span class="kicker">
+          IDENTITY
+        </span>
+
+        <h2>
+          Farmer details
+        </h2>
+
+        <label>
+          Full name
+          <input id="fullName">
+        </label>
+
+        <label>
+          Username
+          <input id="username">
+        </label>
+
+        <label>
+          Email
+          <input
+            id="email"
+            disabled
+          >
+        </label>
+
+        <label>
+          Phone
+          <span class="label-note">
+            optional
+          </span>
+
+          <input
+            id="phone"
+            type="tel"
+          >
+        </label>
+
+        <div class="two-col">
+
+          <label>
+            State
+            <input
+              id="state"
+              placeholder="Kano"
+            >
+          </label>
+
+          <label>
+            City / LGA
+            <input
+              id="city"
+              placeholder="Kano Municipal"
+            >
+          </label>
+
+        </div>
+
+      </section>
+
+      <section class="panel">
+
+        <span class="kicker">
+          FARM CONTEXT
+        </span>
+
+        <h2>
+          Your operation
+        </h2>
+
+        <label>
+          Farm size
+          <input
+            id="farmSize"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="5"
+          >
+        </label>
+
+        <label>
+          Farm size unit
+          <select id="farmSizeUnit">
+            <option>hectares</option>
+            <option>acres</option>
+          </select>
+        </label>
+
+        <label>
+          Main crops
+          <input
+            id="mainCrops"
+            placeholder="Tomato, maize, onions"
+          >
+        </label>
+
+        <label>
+          Preferred language
+          <select id="preferredLanguage">
+            <option>English</option>
+            <option>Hausa</option>
+            <option>Yoruba</option>
+            <option>Igbo</option>
+            <option>Pidgin</option>
+          </select>
+        </label>
+
+        <button
+          id="saveProfile"
+          class="btn primary"
+        >
+          Save profile
+        </button>
+
+        <p
+          id="profileMsg"
+          class="form-msg"
+        ></p>
+
+      </section>
+
+      <section class="panel">
+
+        <span class="kicker">
+          SERVICES
+        </span>
+
+        <h2>
+          Connection status
+        </h2>
+
+        <p
+          id="serviceStatus"
+          class="muted"
+        ></p>
+
+        <a
+          class="btn ghost"
+          href="setup.html"
+        >
+          Open setup
+        </a>
+
+        <div class="notice compact">
+
+          <strong>
+            Security
+          </strong>
+
+          <span>
+            Never use a Supabase secret/service-role
+            key in this browser app.
+          </span>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/profile.js"></script>
+
+</body>
+</html>
