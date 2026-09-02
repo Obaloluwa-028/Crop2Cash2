@@ -1,22 +1,106 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crop2Cash — Setup</title><link rel="stylesheet" href="assets/css/app.css"></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Crop2Cash — Setup</title>
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+
 <body class="dark-page">
+
   <main class="auth-wrap wide">
-    <a class="brand centered" href="index.html"><span class="brand-mark">C2C</span><span>Crop2Cash</span></a>
+
+    <a class="brand centered" href="index.html">
+      <span class="brand-mark">C2C</span>
+      <span>Crop2Cash</span>
+    </a>
+
     <section class="auth-card setup-card">
-      <div class="form-intro"><span class="kicker">ONE-TIME SETUP</span><h1>Connect your services</h1><p>This is a no-code configuration page. Once these values are saved in this browser, the app can be uploaded to GitHub Pages without editing source code.</p></div>
-      <div class="notice"><strong>Important</strong><span>Your Supabase publishable key is designed for browser use with RLS. Do not paste a Supabase secret/service-role key here. A Gemini API key entered in a browser is appropriate for a controlled competition demo only; production should move the AI call to a server/edge function.</span></div>
-      <label>Supabase Project URL<input id="supabaseUrl" placeholder="https://your-project.supabase.co"></label>
-      <label>Supabase Publishable Key<input id="supabaseKey" type="password" placeholder="sb_publishable_..."></label>
-      <label>Gemini API Key <span class="label-note">optional until AI is enabled</span><input id="geminiKey" type="password" placeholder="AIza..."></label>
-      <label>Gemini model<input id="geminiModel" value="gemini-3.7-flash"></label>
-      <div class="setup-actions"><button id="saveSetup" class="btn primary">Save configuration</button><button id="testSetup" class="btn ghost">Test connection</button></div>
+
+      <div class="form-intro">
+        <span class="kicker">ONE-TIME SETUP</span>
+        <h1>Connect your services</h1>
+        <p>
+          Connect Crop2Cash to Supabase and Gemini.
+          Your configuration is stored locally in this browser.
+        </p>
+      </div>
+
+      <div class="notice">
+        <strong>Important</strong>
+        <span>
+          Use your Supabase publishable key, never your secret/service-role key.
+          For the competition demo, the Gemini key can be entered here.
+          A production deployment should move AI calls to a secure server/Edge Function.
+        </span>
+      </div>
+
+      <label>
+        Supabase Project URL
+        <input
+          id="supabaseUrl"
+          type="url"
+          placeholder="https://your-project.supabase.co"
+        >
+      </label>
+
+      <label>
+        Supabase Publishable Key
+        <input
+          id="supabaseKey"
+          type="password"
+          placeholder="sb_publishable_..."
+        >
+      </label>
+
+      <label>
+        Gemini API Key
+        <span class="label-note">Required for AI analysis</span>
+        <input
+          id="geminiKey"
+          type="password"
+          placeholder="AIza..."
+        >
+      </label>
+
+      <label>
+        Gemini model
+        <input
+          id="geminiModel"
+          value="gemini-3.7-flash"
+        >
+      </label>
+
+      <div class="setup-actions">
+        <button id="saveSetup" class="btn primary" type="button">
+          Save configuration
+        </button>
+
+        <button id="testSetup" class="btn ghost" type="button">
+          Test connection
+        </button>
+      </div>
+
       <p id="setupMsg" class="form-msg"></p>
-      <div class="setup-help"><strong>Supabase database:</strong> run <code>supabase/schema.sql</code> once in Supabase SQL Editor. <strong>Email confirmation:</strong> disable it for the fastest competition signup flow, or keep it on if you prefer verified accounts.</div>
+
+      <div class="setup-help">
+        <strong>Supabase:</strong>
+        make sure you have already run
+        <code>supabase/schema.sql</code>
+        in the Supabase SQL Editor.
+      </div>
+
     </section>
+
   </main>
+
+  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- IMPORTANT: core.js MUST load before setup.js -->
+  <script src="assets/js/core.js"></script>
   <script src="assets/js/setup.js"></script>
+
 </body>
 </html>
