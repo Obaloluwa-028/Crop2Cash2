@@ -1,27 +1,146 @@
-const formEls = {
-  url: document.getElementById("supabaseUrl"), key: document.getElementById("supabaseKey"),
-  gemini: document.getElementById("geminiKey"), model: document.getElementById("geminiModel"),
-  msg: document.getElementById("setupMsg")
-};
-const cfg = (()=>{try{return JSON.parse(localStorage.getItem("crop2cash_config_v1")||"{}")}catch{return{}}})();
-formEls.url.value=cfg.supabaseUrl||"";formEls.key.value=cfg.supabaseKey||"";formEls.gemini.value=cfg.geminiKey||"";formEls.model.value=cfg.geminiModel||"gemini-3.7-flash";
+const STORAGE_KEY = "crop2cash_config_v1";
 
-function writeMsg(t,type=""){formEls.msg.textContent=t;formEls.msg.className=`form-msg ${type}`}
-document.getElementById("saveSetup").addEventListener("click",()=>{
-  const supabaseUrl=formEls.url.value.trim().replace(/\/$/,""); const supabaseKey=formEls.key.value.trim();
-  if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(supabaseUrl)) return writeMsg("Enter a valid Supabase project URL.","error");
-  if(!supabaseKey) return writeMsg("Enter your Supabase publishable key.","error");
-  C2C?.saveConfig({supabaseUrl,supabaseKey,geminiKey:formEls.gemini.value.trim(),geminiModel:formEls.model.value.trim()||"gemini-3.7-flash"});
-  writeMsg("Saved. The app is now configured in this browser.","success");
-});
-document.getElementById("testSetup").addEventListener("click",async()=>{
-  writeMsg("Testing Supabase…");
-  const url=formEls.url.value.trim();const key=formEls.key.value.trim();
-  try{
-    if(!url||!key) throw new Error("Enter the Supabase URL and publishable key first.");
-    const sb=window.supabase.createClient(url,key);
-    const {error}=await sb.auth.getSession();
-    if(error) throw error;
-    writeMsg("Supabase connection is working.","success");
-  }catch(e){writeMsg(e.message||"Could not test the connection.","error")}
-});
+const supabaseUrlInput = document.getElementById("supabaseUrl");
+const supabaseKeyInput = document.getElementById("supabaseKey");
+const geminiKeyInput = document.getElementById("geminiKey");
+const geminiModelInput = document.getElementById("geminiModel");
+const message = document.getElementById("setupMsg");
+
+function setMessage(text, type = "") {
+  message.textContent = text;
+  message.className = `form-msg ${type}`;
+}
+
+function getSavedConfig() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function loadSavedConfig() {
+  const config = getSavedConfig();
+
+  supabaseUrlInput.value = config.supabaseUrl || "";
+  supabaseKeyInput.value = config.supabaseKey || "";
+  geminiKeyInput.value = config.geminiKey || "";
+  geminiModelInput.value =
+    config.geminiModel || "gemini-3.7-flash";
+}
+
+function saveConfiguration() {
+  const supabaseUrl = supabaseUrlInput.value
+    .trim()
+    .replace(/\/$/, "");
+
+  const supabaseKey = supabaseKeyInput.value.trim();
+  const geminiKey = geminiKeyInput.value.trim();
+  const geminiModel =
+    geminiModelInput.value.trim() || "gemini-3.7-flash";
+
+  if (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(supabaseUrl)) {
+    setMessage(
+      "Please enter a valid Supabase project URL.",
+      "error"
+    );
+    return false;
+  }
+
+  if (!supabaseKey) {
+    setMessage(
+      "Please enter your Supabase publishable key.",
+      "error"
+    );
+    return false;
+  }
+
+  const config = {
+    supabaseUrl,
+    supabaseKey,
+    geminiKey,
+    geminiModel
+  };
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(config)
+  );
+
+  setMessage(
+    "Configuration saved successfully.",
+    "success"
+  );
+
+  return true;
+}
+
+async function testSupabase() {
+  const supabaseUrl = supabaseUrlInput.value
+    .trim()
+    .replace(/\/$/, "");
+
+  const supabaseKey = supabaseKeyInput.value.trim();
+
+  if (!supabaseUrl || !supabaseKey) {
+    setMessage(
+      "Enter the Supabase URL and publishable key first.",
+      "error"
+    );
+    return;
+  }
+
+  setMessage("Testing Supabase connection…");
+
+  try {
+    const client = window.supabase.createClient(
+      supabaseUrl,
+      supabaseKey
+    );
+
+    const { error } = await client.auth.getSession();
+
+    if (error) {
+      throw error;
+    }
+
+    /*
+      Save immediately after a successful test.
+      This prevents the exact problem we were seeing.
+    */
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        supabaseUrl,
+        supabaseKey,
+        geminiKey: geminiKeyInput.value.trim(),
+        geminiModel:
+          geminiModelInput.value.trim() ||
+          "gemini-3.7-flash"
+      })
+    );
+
+    setMessage(
+      "Supabase connection is working and configuration was saved.",
+      "success"
+    );
+
+  } catch (error) {
+    console.error(error);
+
+    setMessage(
+      error.message || "Supabase connection failed.",
+      "error"
+    );
+  }
+}
+
+document
+  .getElementById("saveSetup")
+  .addEventListener("click", saveConfiguration);
+
+document
+  .getElementById("testSetup")
+  .addEventListener("click", testSupabase);
+
+loadSavedConfig();
